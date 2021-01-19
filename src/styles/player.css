@@ -1,6 +1,6 @@
-.character {
-    animation: character 0.8s steps(20) infinite;
-}
+/* .character {
+    animation: character 0.8s steps(20);
+} */
 
 .character:hover {
     animation-play-state: paused;
