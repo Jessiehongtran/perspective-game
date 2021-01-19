@@ -32,7 +32,7 @@ export default class App extends React.Component {
 
     return (
       <div className="App" tabIndex="0" onKeyDown={this.handleKeyDown}>
-        <Player x={x} y={y} character="https://res.cloudinary.com/dfulxq7so/image/upload/v1611083447/blackmale_avatar_ulodot.png"/>
+        <Player x={x} y={y} character="https://res.cloudinary.com/dfulxq7so/image/upload/v1611086064/astro_boy_ognyea.png"/>
       </div>
     );
   }

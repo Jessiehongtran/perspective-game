@@ -1,0 +1,19 @@
+.character {
+    animation: character 0.8s steps(20) infinite;
+}
+
+.character:hover {
+    animation-play-state: paused;
+}
+
+
+@keyframes character {
+
+    0% {
+        background-position: 0px;
+    }
+
+    100% {
+        background-position: -3025px;
+    }
+}
