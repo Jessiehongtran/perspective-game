@@ -1,0 +1,54 @@
+.selection-container {
+    width: 100%;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family:  'Potta One', cursive;;
+    color: #404040;
+
+    .selection-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: aliceblue;
+        border-radius: 4px;
+        padding: 60px;
+
+        h3 {
+            width: 100%;
+            text-align: center;
+        }
+
+        .characters {
+            width: 100%;
+            display: flex; 
+            justify-content: space-between;
+
+            .each-character {
+                max-width: 300px;
+                margin-right: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .cha-img {
+
+                }
+
+                .cha-title {
+
+                }
+
+                .cha-name {
+                    padding: 10px 30px;
+                    background-color: #328DE8;
+                    border-radius: 24px;
+                    color: white;
+                    max-width: 120px;
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+}

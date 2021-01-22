@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Player from './components/player';
+import CharSelection from './views/characterSelection';
 
 export default class App extends React.Component {
   constructor(props){
@@ -62,7 +63,8 @@ export default class App extends React.Component {
 
     return (
       <div className="App" tabIndex="0" onKeyDown={this.handleKeyDown}>
-        <Player x={x} y={y} step={step} character={sprite}/>
+        {/* <Player x={x} y={y} step={step} character={sprite}/> */}
+        <CharSelection />
       </div>
     );
   }
