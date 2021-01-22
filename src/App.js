@@ -1,7 +1,9 @@
 import React from 'react';
 import './App.css';
+import { Route, Switch } from 'react-router-dom';
 import Player from './components/player';
 import CharSelection from './views/characterSelection';
+import Scenario from './views/scenario';
 
 export default class App extends React.Component {
   constructor(props){
@@ -64,7 +66,28 @@ export default class App extends React.Component {
     return (
       <div className="App" tabIndex="0" onKeyDown={this.handleKeyDown}>
         {/* <Player x={x} y={y} step={step} character={sprite}/> */}
-        <CharSelection />
+        <Switch>
+          <Route 
+            exact path = "/"
+            render = {
+              props => {
+                return (
+                  <CharSelection {...props} />
+                )
+              }
+            }
+          />
+          <Route 
+            exact path = "/scenario/:characterID"
+            render = {
+              props => {
+                return (
+                  <Scenario {...props} />
+                )
+              }
+            }
+          />
+        </Switch>
       </div>
     );
   }

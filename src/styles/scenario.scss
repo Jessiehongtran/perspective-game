@@ -1,0 +1,52 @@
+.scenario-container {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .scenario-wrapper {
+        display: flex; 
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+        flex-wrap: wrap;
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: 20px;
+            max-width: 620px;
+
+            .character_name {
+                text-align: left;
+                font-size: 60px;
+                margin-bottom: 10px;
+                color: #328DE8;
+                font-family: 'Potta One', cursive;
+            }
+
+            .description {
+                text-align: left;
+                margin-bottom: 10px;
+            }
+
+            .command {
+                text-align: left;
+                margin-bottom: 10px;
+            }
+
+            .start-btn {
+                padding: 10px 30px;
+                background-color: #328DE8;
+                border-radius: 24px;
+                color: white;
+                max-width: 120px;
+                margin-top: 20px;
+                border: none;
+                font-size: 20px;
+                cursor: pointer;
+                font-family: 'Potta One', cursive;
+            }
+        }
+    }
+}

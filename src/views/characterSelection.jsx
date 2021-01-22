@@ -20,7 +20,7 @@ export default class CharSelection extends React.Component {
                             <div className="each-character">
                                 <img src={eachChar.cha_img} className="cha-img"/>
                                 <div className="cha-title">{eachChar.cha_title}</div>
-                                <div className="cha-name">{eachChar.cha_name}</div>
+                                <div className="cha-name" onClick={() => this.props.history.push(`scenario/${eachChar.id}`)}>{eachChar.cha_name}</div>
                             </div>)}
                     </div>
                 </div>
