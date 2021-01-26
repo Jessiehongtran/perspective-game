@@ -21,6 +21,8 @@ export default class Player extends React.Component {
                         position: 'absolute',
                         width: '100px',
                         height: '130px',
+                        border: '1px solid black',
+                        borderRadius: '50%'
                     }} 
                     src={this.props.character}
                 />

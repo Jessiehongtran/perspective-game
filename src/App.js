@@ -4,6 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import Player from './components/player';
 import CharSelection from './views/characterSelection';
 import Scenario from './views/scenario';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUp, faArrowLeft, faArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 export default class App extends React.Component {
   constructor(props){
@@ -14,6 +16,7 @@ export default class App extends React.Component {
       speed: 20,
       dir: "",
       step: 1,
+      bgColor: {up: "#F1F1F1", left: "#F1F1F1", down: "#F1F1F1", right: "#F1F1F1" },
       // sprites: [
       //   "https://res.cloudinary.com/dfulxq7so/image/upload/v1611094870/step2_jrj4t4.png",
       //   "https://res.cloudinary.com/dfulxq7so/image/upload/v1611094873/step3_kfd8tl.png",
@@ -52,7 +55,13 @@ export default class App extends React.Component {
           y: y+ speed - 10,
           step: step + 1,
           sprite: this.state.spriteInDirection.right,
-          dir: "right"
+          dir: "right",
+          bgColor: {
+            up: "#F1F1F1",
+            left: "#F1F1F1",
+            down: "#F1F1F1",
+            right: "#38FBDD",
+          }
         })
       } 
       //move up
@@ -61,7 +70,13 @@ export default class App extends React.Component {
           y: y- speed + 10,
           x: x + speed ,
           sprite: this.state.spriteInDirection.up,
-          dir: "up"
+          dir: "up",
+          bgColor: {
+            up: "#38FBDD",
+            left: "#F1F1F1",
+            down: "#F1F1F1",
+            right: "#F1F1F1",
+          }
         })
       } 
       //move left
@@ -71,7 +86,13 @@ export default class App extends React.Component {
           y: y- speed + 10,
           step: step - 1,
           sprite: this.state.spriteInDirection.left,
-          dir: "left"
+          dir: "left",
+          bgColor: {
+            up: "#F1F1F1",
+            left: "#38FBDD",
+            down: "#F1F1F1",
+            right: "#F1F1F1",
+          }
         })
       } 
       //move down
@@ -80,7 +101,13 @@ export default class App extends React.Component {
           y: y + speed - 10,
           x: x - speed ,
           sprite: this.state.spriteInDirection.down,
-          dir: "down"
+          dir: "down",
+          bgColor: {
+            up: "#F1F1F1",
+            left: "#F1F1F1",
+            down: "#38FBDD",
+            right: "#F1F1F1",
+          }
         })
       }
     } else {
@@ -140,7 +167,7 @@ export default class App extends React.Component {
   }
 
   render(){
-    const { x, y, step, sprite } = this.state;
+    const { x, y, step, sprite, bgColor } = this.state;
     console.log('test1', this.isInsideRectangle([{x: 120, y: 140}, { x: 220, y: 90}, { x: 200, y: 140}, { x: 160, y: 160}], { x: x, y: y}))
     console.log('test2', this.isInsideRectangle([{x: 160, y: 160}, { x: 620, y: -50}, { x: 660, y: -30}, { x: 220, y: 190}], { x: x, y: y}))
 
@@ -173,7 +200,35 @@ export default class App extends React.Component {
               props => {
                 return (
                   <div style={{backgroundColor: 'blue',  position: 'relative', overflow: 'visible', backgroundImage: 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1611352318/officeBG_jkywvm.svg)', backgroundSize: 'cover', height: '100vh'}}>
-                  <Player x={x} y={y} step={step} character={sprite}/>
+                    <Player x={x} y={y} step={step} character={sprite}/>
+                    <div className="keys" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'absolute', left: '5%', top: '60%'}}>
+                      <div className="up" style={{ width: '50px', height: '50px', border: '1px solid black', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '3px', backgroundColor: bgColor.up}}>
+                        <FontAwesomeIcon
+                          icon={faArrowUp}
+                          style={{ fontSize: '24px' }} 
+                        />
+                      </div>
+                      <div style={{ display: 'flex' }}>
+                        <div className="left" style={{ width: '50px', height: '50px', border: '1px solid black', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '3px', backgroundColor: bgColor.left}}>
+                          <FontAwesomeIcon
+                            icon={faArrowLeft}
+                            style={{ fontSize: '24px' }} 
+                          />
+                        </div>
+                        <div className="down" style={{ width: '50px', height: '50px', border: '1px solid black', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '3px', backgroundColor: bgColor.down}}>
+                          <FontAwesomeIcon
+                          icon={faArrowDown}
+                          style={{ fontSize: '24px' }} 
+                          />
+                        </div>
+                        <div className="right" style={{ width: '50px', height: '50px', border: '1px solid black', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '3px', backgroundColor: bgColor.right}}>
+                          <FontAwesomeIcon
+                            icon={faArrowRight}
+                            style={{ fontSize: '24px' }} 
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 )
               }
