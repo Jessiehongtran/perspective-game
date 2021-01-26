@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Player from './components/player';
 import CharSelection from './views/characterSelection';
 import Scenario from './views/scenario';
+import Office from './views/office';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp, faArrowLeft, faArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
@@ -230,6 +231,16 @@ export default class App extends React.Component {
                       </div>
                     </div>
                   </div>
+                )
+              }
+            }
+          />
+          <Route 
+            exact path = "/office"
+            render = {
+              props => {
+                return (
+                  <Office {...props} />
                 )
               }
             }
