@@ -12,6 +12,7 @@ export default class App extends React.Component {
       x: 200,
       y: 180,
       speed: 20,
+      dir: "",
       step: 1,
       // sprites: [
       //   "https://res.cloudinary.com/dfulxq7so/image/upload/v1611094870/step2_jrj4t4.png",
@@ -38,9 +39,10 @@ export default class App extends React.Component {
   }
 
   handleKeyDown(e){
-    const { x, y, speed, step } = this.state;
+    const { x, y, speed, step, dir } = this.state;
 
-    if ( this.isInsideRectangle([{x: 120, y: 140}, { x: 220, y: 90}, { x: 280, y: 120}, { x: 180, y: 170}], { x: x, y: y})
+    if ( 
+      this.isInsideRectangle([{x: 120, y: 140}, { x: 220, y: 90}, { x: 280, y: 120}, { x: 180, y: 170}], { x: x, y: y})
       || this.isInsideRectangle([{x: 180, y: 170}, { x: 620, y: -50}, { x: 660, y: -30}, { x: 220, y: 190}], { x: x, y: y})
       ){
       //move right
@@ -49,7 +51,8 @@ export default class App extends React.Component {
           x: x+ speed,
           y: y+ speed - 10,
           step: step + 1,
-          sprite: this.state.spriteInDirection.right
+          sprite: this.state.spriteInDirection.right,
+          dir: "right"
         })
       } 
       //move up
@@ -57,7 +60,8 @@ export default class App extends React.Component {
         this.setState({
           y: y- speed + 10,
           x: x + speed ,
-          sprite: this.state.spriteInDirection.up
+          sprite: this.state.spriteInDirection.up,
+          dir: "up"
         })
       } 
       //move left
@@ -66,7 +70,8 @@ export default class App extends React.Component {
           x: x- speed,
           y: y- speed + 10,
           step: step - 1,
-          sprite: this.state.spriteInDirection.left
+          sprite: this.state.spriteInDirection.left,
+          dir: "left"
         })
       } 
       //move down
@@ -74,10 +79,21 @@ export default class App extends React.Component {
         this.setState({
           y: y + speed - 10,
           x: x - speed ,
-          sprite: this.state.spriteInDirection.down
+          sprite: this.state.spriteInDirection.down,
+          dir: "down"
         })
       }
-    } 
+    } else {
+      if (dir === "up"){
+        this.setState({y : y - 5})
+      } else if (dir === "down"){
+        this.setState({y : y + 5})
+      } else if (dir === "left"){
+        this.setState({x : x + 5})
+      } else if (dir === "right"){
+        this.setState({x : x - 5})
+      }
+    }
   }
 
   rectArea(x1, y1, x2, y2, x3, y3, x4, y4){
@@ -102,7 +118,8 @@ export default class App extends React.Component {
     const topRight = rect[1]
     const bottomRight = rect[2]
     const bottomLeft = rect[3]
-    if (  this.triangArea(topLeft.x, topLeft.y, target.x, target.y, bottomLeft.x, bottomRight.y) 
+
+    if (  this.triangArea(topLeft.x, topLeft.y, target.x, target.y, bottomLeft.x, bottomLeft.y) 
         + this.triangArea(topLeft.x, topLeft.y, target.x, target.y, topRight.x, topRight.y)
         + this.triangArea(topRight.x, topRight.y, target.x, target.y, bottomRight.x, bottomRight.y)
         + this.triangArea(bottomRight.x, bottomRight.y, target.x, target.y, bottomLeft.x, bottomLeft.y) 
