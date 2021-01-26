@@ -10,16 +10,17 @@ export default class Player extends React.Component {
     }
 
     render(){
+        console.log('x', this.props.x, 'y', this.props.y)
 
         return (
-            <div>
+            <div className="character-container">
                 <img 
                     style={{
                         top: `${this.props.y}px`, 
                         left: `${this.props.x}px`, 
                         position: 'absolute',
                         width: '100px',
-                        height: '100px',
+                        height: '130px',
                     }} 
                     src={this.props.character}
                 />

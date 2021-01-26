@@ -1,19 +1,5 @@
-/* .character {
-    animation: character 0.8s steps(20);
-} */
-
-.character:hover {
-    animation-play-state: paused;
+.character-container {
+    position: relative;
+    overflow: visible
 }
 
-
-@keyframes character {
-
-    0% {
-        background-position: 0px;
-    }
-
-    100% {
-        background-position: -3025px;
-    }
-}

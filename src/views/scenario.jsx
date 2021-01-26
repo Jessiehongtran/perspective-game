@@ -30,7 +30,7 @@ export default class Scenario extends React.Component {
                                 <div className="command">
                                     {scenario.command}
                                 </div>
-                                <button className="start-btn">Start</button>
+                                <button className="start-btn" onClick={() => this.props.history.push('/environment')}>Start</button>
                             </div>
                         </div>
                     </div>
