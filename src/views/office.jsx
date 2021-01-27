@@ -11,11 +11,64 @@ export default class Office extends React.Component {
             speed: 20,
             dir: "",
             step: 1,
+            messages: [
+                {
+                    name: "Blake",
+                    text: "What's up Yang, how are you?",
+                    bgColor: "pink",
+                    color: "black"
+                },
+                {
+                    name: "Yang",
+                    text: "",
+                    bgColor: "blue",
+                    color: "white"
+                },
+                {
+                    name: "Jay",
+                    text: "So today we will talk about",
+                    bgColor: "white",
+                    color: "black"
+                },
+                {
+                    name: "Yang",
+                    text: "",
+                    bgColor: "blue",
+                    color: "white"
+                },
+            ]
         }
+        this.addMessage = this.addMessage.bind(this)
+    }
+
+    getMessageFlow(arr){
+        for (let i =0; i< arr.length; i++){
+            if (arr[i].text.length == 0){
+                return arr.slice(0, i)
+            }
+        }
+        return arr
+    }
+
+    updateTextLatest(arr, text){
+        for (let i = 0; i < arr.length; i++){
+            if (arr[i].text.length === 0){
+                arr[i].text = text
+                return arr
+            }
+        }
+    }
+
+    addMessage(e){
+        this.setState({
+            messages: this.updateTextLatest(this.state.messages, e.target.value)
+        })
+
     }
 
     render(){
         const { x, y } = this.state;
+        console.log('props in office', this.props)
 
         return (
             <div style={{ display: 'flex' }}>
@@ -31,14 +84,16 @@ export default class Office extends React.Component {
                         <textarea 
                             placeholder="..."
                             style={{ border: 'none', width: '100%', outline: 'none', paddingLeft: '10px'}}
+                            onBlur={e => this.addMessage(e)}
                         >
                         </textarea>
                     </div>
                 </div>
                 <div className="chatbox" style={{ width: '400px', backgroundColor: 'silver', height: '100vh'}}>
-                    <Chat />
+                    <Chat messages={this.state.messages}/>
                 </div>
             </div>
         )
     }
 }
+

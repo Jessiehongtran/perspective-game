@@ -33,21 +33,23 @@ export default class Chat extends React.Component {
                 return arr.slice(0, i)
             }
         }
+        return arr
     }
 
     render(){
 
-        const messagesToShow = this.getMessageFlow(this.state.messages)
+        const messagesToShow = this.getMessageFlow(this.props.messages)
+        console.log('props in Chat', this.props)
 
         return (
-            <div>
+            <div style={{ padding: "20px" }}>
                 {messagesToShow.map(mess => 
                     mess.text.length > 0
-                    ? <div className="each_message" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                            <div className="name">
+                    ? <div className="each_message" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', margin: '10px 0'}}>
+                            <div className="name" style={{ color: '#3D3D3D', paddingLeft: '5px', fontSize: '14px' }}>
                                 {mess.name}
                             </div>
-                            <div className="text" style={{ backgroundColor: `${mess.bgColor}`, color: `${mess.color}`, padding: '8px', borderRadius: '18px', fontSize: '14px', marginTop: '5px'}}>
+                            <div className="text" style={{ backgroundColor: `${mess.bgColor}`, color: `${mess.color}`, padding: '8px 15px', borderRadius: '18px', fontSize: '14px', marginTop: '5px'}}>
                                 {mess.text}
                             </div>
                         </div>
@@ -56,3 +58,4 @@ export default class Chat extends React.Component {
         )
     }
 }
+
