@@ -37,8 +37,8 @@ export default class App extends React.Component {
 
     if ( 
       // true
-      this.isInsideRectangle([{x: 260 + 20, y: 414 - 20}, { x: 500 + 20, y: 261 + 20}, { x: 760 - 20, y: 391 + 20}, { x: 520 + 20, y: 565 - 20}], { x: x, y: y})
-      || this.isInsideRectangle([{x: 600 + 20, y: 295 - 20}, { x: 800 + 20, y: 180 + 20}, { x: 940 - 20, y: 250 + 20}, { x: 800 + 20, y: 369 - 20}], { x: x, y: y})
+      this.isInsideRectangle([{x: 280 + 20, y: 414 -20}, { x: 520 + 20, y: 261 + 20}, { x: 760 - 20, y: 391 + 20}, { x: 500 + 20, y: 565 - 20}], { x: x, y: y})
+      || this.isInsideRectangle([{x: 580 + 20, y: 305 - 20}, { x: 780 + 20, y: 200 + 20}, { x: 920 - 20, y: 270 + 20}, { x: 780 + 20, y: 389 - 20}], { x: x, y: y})
       ){
       //move right
       if(e.keyCode === 39) { 
