@@ -19,7 +19,7 @@ export default class Scenario extends React.Component {
                 return (
                     <div className="scenario-container">
                         <div className="scenario-wrapper">
-                            <img src={scenario.image}/>
+                            <img class="scenario-image" src={scenario.image}/>
                             <div className="content">
                                 <div className="character_name">
                                     {scenario.character_name}

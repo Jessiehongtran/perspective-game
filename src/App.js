@@ -12,24 +12,12 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      x: 200,
-      y: 180,
+      x: 400,
+      y: 400,
       speed: 20,
       dir: "",
       step: 1,
       bgColor: {up: "#F1F1F1", left: "#F1F1F1", down: "#F1F1F1", right: "#F1F1F1" },
-      // sprites: [
-      //   "https://res.cloudinary.com/dfulxq7so/image/upload/v1611094870/step2_jrj4t4.png",
-      //   "https://res.cloudinary.com/dfulxq7so/image/upload/v1611094873/step3_kfd8tl.png",
-      //   "https://res.cloudinary.com/dfulxq7so/image/upload/v1611094876/step4_cqta9z.png",
-      //   "https://res.cloudinary.com/dfulxq7so/image/upload/v1611094879/step5_lgi44j.png",
-      //   "https://res.cloudinary.com/dfulxq7so/image/upload/v1611094866/step1_n1vfge.png",
-      //   "https://res.cloudinary.com/dfulxq7so/image/upload/v1611097089/step6_y0xiw4.png",
-      //   "https://res.cloudinary.com/dfulxq7so/image/upload/v1611097092/step7_vht0ce.png",
-      //   "https://res.cloudinary.com/dfulxq7so/image/upload/v1611097095/step8_mdnfj6.png",
-      //   "https://res.cloudinary.com/dfulxq7so/image/upload/v1611097101/step9_h3bdc5.png",
-      //   "https://res.cloudinary.com/dfulxq7so/image/upload/v1611097105/step10_t7vklj.png"
-      // ],
       spriteInDirection: {
         up: "https://res.cloudinary.com/dfulxq7so/image/upload/v1611355462/Devvy-back_wvx5lx.svg",
         down: "https://res.cloudinary.com/dfulxq7so/image/upload/v1611355466/Devvy-front_piyqpy.svg",
@@ -46,8 +34,8 @@ export default class App extends React.Component {
     const { x, y, speed, step, dir } = this.state;
 
     if ( 
-      this.isInsideRectangle([{x: 120, y: 140}, { x: 220, y: 90}, { x: 280, y: 120}, { x: 180, y: 170}], { x: x, y: y})
-      || this.isInsideRectangle([{x: 180, y: 170}, { x: 620, y: -50}, { x: 660, y: -30}, { x: 220, y: 190}], { x: x, y: y})
+      this.isInsideRectangle([{x: 240, y: 404}, { x: 520, y: 250}, { x: 600, y: 290}, { x: 320, y: 444}], { x: x, y: y})
+      || this.isInsideRectangle([{x: 320, y: 444}, { x: 800, y: 180}, { x: 980, y: 270}, { x: 500, y: 534}], { x: x, y: y})
       ){
       //move right
       if(e.keyCode === 39) { 
@@ -68,7 +56,7 @@ export default class App extends React.Component {
       //move up
       else if (e.keyCode === 38){
         this.setState({
-          y: y- speed + 10,
+          y: y- speed + 9,
           x: x + speed ,
           sprite: this.state.spriteInDirection.up,
           dir: "up",
@@ -99,7 +87,7 @@ export default class App extends React.Component {
       //move down
       else if (e.keyCode === 40){
         this.setState({
-          y: y + speed - 10,
+          y: y + speed - 9,
           x: x - speed ,
           sprite: this.state.spriteInDirection.down,
           dir: "down",
@@ -112,15 +100,16 @@ export default class App extends React.Component {
         })
       }
     } else {
-      if (dir === "up"){
-        this.setState({y : y - 5})
-      } else if (dir === "down"){
-        this.setState({y : y + 5})
-      } else if (dir === "left"){
-        this.setState({x : x + 5})
-      } else if (dir === "right"){
-        this.setState({x : x - 5})
-      }
+      alert("out")
+      // if (dir === "up"){
+      //   this.setState({y : y - 5})
+      // } else if (dir === "down"){
+      //   this.setState({y : y + 5})
+      // } else if (dir === "left"){
+      //   this.setState({x : x + 5})
+      // } else if (dir === "right"){
+      //   this.setState({x : x - 5})
+      // }
     }
   }
 
@@ -169,8 +158,7 @@ export default class App extends React.Component {
 
   render(){
     const { x, y, step, sprite, bgColor } = this.state;
-    console.log('test1', this.isInsideRectangle([{x: 120, y: 140}, { x: 220, y: 90}, { x: 200, y: 140}, { x: 160, y: 160}], { x: x, y: y}))
-    console.log('test2', this.isInsideRectangle([{x: 160, y: 160}, { x: 620, y: -50}, { x: 660, y: -30}, { x: 220, y: 190}], { x: x, y: y}))
+    console.log('x', x, 'y', y)
 
     return (
       <div className="App" tabIndex="0" onKeyDown={this.handleKeyDown}>
@@ -200,9 +188,9 @@ export default class App extends React.Component {
             render = {
               props => {
                 return (
-                  <div style={{backgroundColor: 'blue',  position: 'relative', overflow: 'visible', backgroundImage: 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1611352318/officeBG_jkywvm.svg)', backgroundSize: 'cover', height: '100vh'}}>
+                  <div style={{backgroundColor: 'grey',  position: 'relative', overflow: 'visible', backgroundImage: 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1611851070/perspectives_officeenviro_wcwl64.png)', backgroundSize: 'cover', height: '100vh'}}>
                     <Player x={x} y={y} step={step} character={sprite}/>
-                    <div className="keys" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'absolute', left: '5%', top: '60%'}}>
+                    <div className="keys" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'absolute', left: '2%', top: '60%'}}>
                       <div className="up" style={{ width: '50px', height: '50px', border: '1px solid black', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '3px', backgroundColor: bgColor.up}}>
                         <FontAwesomeIcon
                           icon={faArrowUp}
