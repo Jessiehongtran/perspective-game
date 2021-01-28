@@ -12,9 +12,10 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      x: 400,
-      y: 400,
+      x: 440,
+      y: 420,
       speed: 20,
+      message: "Hi there!",
       dir: "",
       step: 1,
       bgColor: {up: "#F1F1F1", left: "#F1F1F1", down: "#F1F1F1", right: "#F1F1F1" },
@@ -31,11 +32,13 @@ export default class App extends React.Component {
   }
 
   handleKeyDown(e){
+    console.log(e.keyCode)
     const { x, y, speed, step, dir } = this.state;
 
     if ( 
-      this.isInsideRectangle([{x: 240, y: 404}, { x: 520, y: 250}, { x: 600, y: 290}, { x: 320, y: 444}], { x: x, y: y})
-      || this.isInsideRectangle([{x: 320, y: 444}, { x: 800, y: 180}, { x: 980, y: 270}, { x: 500, y: 534}], { x: x, y: y})
+      // true
+      this.isInsideRectangle([{x: 260 + 20, y: 414 - 20}, { x: 500 + 20, y: 261 + 20}, { x: 760 - 20, y: 391 + 20}, { x: 520 + 20, y: 565 - 20}], { x: x, y: y})
+      || this.isInsideRectangle([{x: 600 + 20, y: 295 - 20}, { x: 800 + 20, y: 180 + 20}, { x: 940 - 20, y: 250 + 20}, { x: 800 + 20, y: 369 - 20}], { x: x, y: y})
       ){
       //move right
       if(e.keyCode === 39) { 
@@ -100,16 +103,31 @@ export default class App extends React.Component {
         })
       }
     } else {
-      alert("out")
-      // if (dir === "up"){
-      //   this.setState({y : y - 5})
-      // } else if (dir === "down"){
-      //   this.setState({y : y + 5})
-      // } else if (dir === "left"){
-      //   this.setState({x : x + 5})
-      // } else if (dir === "right"){
-      //   this.setState({x : x - 5})
-      // }
+      if (e.keyCode === 13){
+        this.setState({ message: "Hi there!"})
+        if (dir === "up"){
+          this.setState({
+            y : y + 40,
+            x : x - 30
+          })
+        } else if (dir === "down"){
+          this.setState({
+            y : y - 40,
+            x: x + 30
+          })
+        } else if (dir === "left"){
+          this.setState({
+            x : x + 40
+          })
+        } else if (dir === "right"){
+          this.setState({
+            x : x - 40
+          })
+        }
+      } else {
+        alert("out")
+        this.setState({ message: "Press ENTER key to go back"})
+      }
     }
   }
 
@@ -157,8 +175,9 @@ export default class App extends React.Component {
   }
 
   render(){
-    const { x, y, step, sprite, bgColor } = this.state;
+    const { x, y, step, sprite, bgColor, message } = this.state;
     console.log('x', x, 'y', y)
+    console.log( this.isInsideRectangle([{x: 340, y: 454}, { x: 820, y: 190}, { x: 980, y: 170}, { x: 560, y: 555}], { x: x, y: y}))
 
     return (
       <div className="App" tabIndex="0" onKeyDown={this.handleKeyDown}>
@@ -190,6 +209,11 @@ export default class App extends React.Component {
                 return (
                   <div style={{backgroundColor: 'grey',  position: 'relative', overflow: 'visible', backgroundImage: 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1611851070/perspectives_officeenviro_wcwl64.png)', backgroundSize: 'cover', height: '100vh'}}>
                     <Player x={x} y={y} step={step} character={sprite}/>
+                    <div style={{ position: 'absolute', left: `${x}px`, top: `${y}px`, border: '1px solid black', width: '2px', height: '2px'}}>
+                    </div>
+                    <div style={{ position: 'absolute', left: '100px', top: '50px', color: 'white', fontSize: '24px', fontWeight: 'bold'}}>
+                      {message}
+                    </div>
                     <div className="keys" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'absolute', left: '2%', top: '60%'}}>
                       <div className="up" style={{ width: '50px', height: '50px', border: '1px solid black', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '3px', backgroundColor: bgColor.up}}>
                         <FontAwesomeIcon
