@@ -11,6 +11,7 @@ export default class Office extends React.Component {
             speed: 20,
             dir: "",
             step: 1,
+            YangText: "",
             messages: [
                 {
                     name: "Blake",
@@ -26,7 +27,7 @@ export default class Office extends React.Component {
                 },
                 {
                     name: "Jay",
-                    text: "So today we will talk about",
+                    text: "So today we will talk about...",
                     bgColor: "white",
                     color: "black"
                 },
@@ -59,12 +60,24 @@ export default class Office extends React.Component {
         }
     }
 
+    updateMessage(e){
+        this.setState({ YangText: e.target.value })
+    }
+
     addMessage(e){
         this.setState({
-            messages: this.updateTextLatest(this.state.messages, e.target.value)
+            messages: this.updateTextLatest(this.state.messages, this.state.YangText),
+            YangText: ""
         })
 
     }
+
+    onEnterPress = (e) => {
+        if(e.keyCode == 13 && e.shiftKey == false) {
+          e.preventDefault();
+          this.addMessage()
+        }
+      }
 
     render(){
         const { x, y } = this.state;
@@ -81,12 +94,17 @@ export default class Office extends React.Component {
                         <div className="userName">
                             Yang: 
                         </div>
-                        <textarea 
-                            placeholder="..."
-                            style={{ border: 'none', width: '100%', outline: 'none', paddingLeft: '10px'}}
-                            onBlur={e => this.addMessage(e)}
-                        >
-                        </textarea>
+                        <form> 
+                            <textarea 
+                                placeholder="..."
+                                style={{ border: 'none', width: '100%', outline: 'none', paddingLeft: '10px'}}
+                                onChange={e => this.updateMessage(e)}
+                                onKeyDown={this.onEnterPress}
+                                value={this.state.YangText}
+                            >
+                            </textarea>
+                            <button type="submit" style={{display: 'none'}} ></button>
+                        </form>
                     </div>
                 </div>
                 <div className="chatbox" style={{ width: '400px', backgroundColor: 'silver', height: '100vh'}}>
