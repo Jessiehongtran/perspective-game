@@ -214,6 +214,12 @@ export default class App extends React.Component {
                     <div style={{ position: 'absolute', left: '100px', top: '50px', color: 'white', fontSize: '24px', fontWeight: 'bold'}}>
                       {message}
                     </div>
+                    <div style={{ position: 'absolute', right: '100px', top: '50px' }}>
+                      <button 
+                        style={{ border: 'none', borderRadius: '8px', padding: '8px 15px', fontSize: '24px'}}
+                        onClick={() => props.history.push('/office')}
+                      >Next</button>
+                    </div>
                     <div className="keys" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'absolute', left: '2%', top: '60%'}}>
                       <div className="up" style={{ width: '50px', height: '50px', border: '1px solid black', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '3px', backgroundColor: bgColor.up}}>
                         <FontAwesomeIcon
