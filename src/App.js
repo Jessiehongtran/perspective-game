@@ -15,7 +15,7 @@ export default class App extends React.Component {
       x: 440,
       y: 420,
       speed: 20,
-      message: "Hi there! Press key arrows to move",
+      message: "Click on Yang and press key arrows to move",
       dir: "",
       step: 1,
       bgColor: {up: "#F1F1F1", left: "#F1F1F1", down: "#F1F1F1", right: "#F1F1F1" },
