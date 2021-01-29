@@ -94,10 +94,10 @@ export default class Office extends React.Component {
                         <div className="userName">
                             Yang: 
                         </div>
-                        <form> 
+                        <form style={{ width: '95%', height: '20vh' }}> 
                             <textarea 
                                 placeholder="..."
-                                style={{ border: 'none', width: '100%', outline: 'none', paddingLeft: '10px'}}
+                                style={{ border: 'none', width: '100%', height: '100%', outline: 'none', paddingLeft: '10px'}}
                                 onChange={e => this.updateMessage(e)}
                                 onKeyDown={this.onEnterPress}
                                 value={this.state.YangText}
