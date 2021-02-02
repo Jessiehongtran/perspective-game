@@ -5,6 +5,7 @@ import Player from './components/player';
 import CharSelection from './views/characterSelection';
 import Scenario from './views/scenario';
 import Office from './views/office';
+import Office2 from './views/office2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp, faArrowLeft, faArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
@@ -198,6 +199,16 @@ export default class App extends React.Component {
               props => {
                 return (
                   <Scenario {...props} />
+                )
+              }
+            }
+          />
+          <Route 
+            exact path = "/office2"
+            render = {
+              props => {
+                return (
+                  <Office2 {...props} />
                 )
               }
             }

@@ -87,7 +87,7 @@ export default class Office extends React.Component {
             <div style={{ display: 'flex' }}>
                 <div className="office-input" style={{ width: '80%'}}>
                     <div className="office" style={{ width: '100%', height: '80vh' }}>
-                        <img style={{ width: '100%', height: '100%' }} src="https://res.cloudinary.com/dfulxq7so/image/upload/v1611698126/meetGuys_eg5wtf.png"/>
+                        <img style={{ width: '100%', height: '100%' }} src="https://res.cloudinary.com/dfulxq7so/image/upload/v1612206985/meeting_vgpqtu.png"/>
                         <Player x={x} y={y} step={1} character="https://res.cloudinary.com/dfulxq7so/image/upload/v1611950509/Yang_Front_2x_j9ad21.png" />
                     </div>
                     <div className="userInput" style={{ backgroundColor: 'white', border: '2px solid grey', height: '20vh', display: 'flex', width: '100%', justifyContent: 'flex-start'}}>
