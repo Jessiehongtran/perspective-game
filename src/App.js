@@ -218,20 +218,38 @@ export default class App extends React.Component {
             render = {
               props => {
                 return (
-                  <div style={{backgroundColor: 'grey',  position: 'relative', overflow: 'visible', backgroundImage: 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1611851070/perspectives_officeenviro_wcwl64.png)', backgroundSize: 'cover', height: '100vh'}}>
-                    <Player x={x} y={y} step={step} character={sprite}/>
-                    <div style={{ position: 'absolute', left: `${x}px`, top: `${y}px`, border: '1px solid black', width: '2px', height: '2px'}}>
+                  <div style={{backgroundColor: 'grey',  position: 'relative', overflow: 'visible', backgroundImage: 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1612315425/perspectives_office_e4nmpd.svg)', backgroundSize: '100%', height: '100vh'}}>
+                    <div className="cupboard-left" style={{ width: '25%', left: '50px', top: '370px', position: 'absolute' }}>
+                      <img src="https://res.cloudinary.com/dfulxq7so/image/upload/v1612315396/perspectives_backdrawers_xhrp3w.svg" />
                     </div>
-                    <div style={{ position: 'absolute', left: '100px', top: '50px', color: 'white', fontSize: '24px', fontWeight: 'bold'}}>
+                    <div className="cupboard-right" style={{ width: '25%', left: '950px', top: '310px', position: 'absolute' }}>
+                      <img src="https://res.cloudinary.com/dfulxq7so/image/upload/v1612315422/perspectives_frontdrwaers_dcdc8q.svg" />
+                    </div>
+                    <div className="table-left" style={{ width: '25%', left: '450px', top: '200px', position: 'absolute' }}>
+                      <img src="https://res.cloudinary.com/dfulxq7so/image/upload/v1612315399/perspectives_conferencetable_dwbt6w.svg" />
+                    </div>
+                    <div className="table-right-1" style={{ width: '15%', left: '1000px', top: '500px', position: 'absolute', display: 'flex' }}>
+                      <img src="https://res.cloudinary.com/dfulxq7so/image/upload/v1612315418/perspectives_desk4_ktj66x.svg" />
+                    </div>
+                    <div className="table-right-2" style={{ width: '15%', left: '850px', top: '600px', position: 'absolute', display: 'flex' }}>
+                      <img src="https://res.cloudinary.com/dfulxq7so/image/upload/v1612315418/perspectives_desk4_ktj66x.svg" />
+                    </div>
+                    <div className="table-right-3" style={{ width: '15%', left: '700px', top: '700px', position: 'absolute', display: 'flex' }}>
+                      <img src="https://res.cloudinary.com/dfulxq7so/image/upload/v1612315418/perspectives_desk4_ktj66x.svg" />
+                    </div>
+                    <div className="character-position" style={{ position: 'absolute', left: `${x}px`, top: `${y}px`, border: '1px solid black', width: '2px', height: '2px'}}>
+                    </div>
+                    <div className="guideline" style={{ position: 'absolute', left: '100px', top: '50px', color: 'white', fontSize: '24px', fontWeight: 'bold'}}>
                       {message}
                     </div>
+                    <Player x={x} y={y} step={step} character={sprite}/>
                     <div style={{ position: 'absolute', right: '100px', top: '50px' }}>
                       <button 
                         style={{ border: 'none', borderRadius: '8px', padding: '8px 15px', fontSize: '24px'}}
                         onClick={() => props.history.push('/office')}
                       >Next</button>
                     </div>
-                    <div className="keys" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'absolute', left: '2%', top: '60%'}}>
+                    <div className="keys" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'absolute', left: '2%', top: '80%'}}>
                       <div className="up" style={{ width: '50px', height: '50px', border: '1px solid black', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '3px', backgroundColor: bgColor.up}}>
                         <FontAwesomeIcon
                           icon={faArrowUp}
